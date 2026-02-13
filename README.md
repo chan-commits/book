@@ -4,6 +4,8 @@
 
 This repository contains the source of "The Rust Programming Language" book.
 
+Language / 语言: **English** | [简体中文](READMECN.md)
+
 [The book is available in dead-tree form from No Starch Press][nostarch].
 
 [nostarch]: https://nostarch.com/rust-programming-language-2nd-edition
@@ -105,3 +107,4 @@ which is provided in `ci/dictionary.txt`. If the script produces a false
 positive (say, you used the word `BTreeMap` which the script considers invalid),
 you need to add this word to `ci/dictionary.txt` (keep the sorted order for
 consistency).
+

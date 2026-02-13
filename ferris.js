@@ -24,7 +24,40 @@ document.addEventListener("DOMContentLoaded", () => {
   for (let ferrisType of FERRIS_TYPES) {
     attachFerrises(ferrisType);
   }
+
+  attachLanguageSwitcher();
 });
+
+function attachLanguageSwitcher() {
+  let rightButtons = document.querySelector(".right-buttons");
+  if (!(rightButtons instanceof HTMLElement)) {
+    return;
+  }
+
+  let button = document.createElement("a");
+  button.classList.add("icon-button", "language-toggle");
+
+  let currentPath = window.location.pathname;
+  let htmlFileMatch = currentPath.match(/[^/]+\.html$/);
+  if (!htmlFileMatch) {
+    return;
+  }
+
+  let pageName = htmlFileMatch[0];
+  let basePath = currentPath.slice(0, -pageName.length);
+
+  if (basePath.endsWith("/CN/")) {
+    button.textContent = "EN";
+    button.setAttribute("href", `${basePath.slice(0, -3)}${pageName}`);
+    button.setAttribute("title", "Switch to English");
+  } else {
+    button.textContent = "中文";
+    button.setAttribute("href", `${basePath}CN/${pageName}`);
+    button.setAttribute("title", "切换到中文");
+  }
+
+  rightButtons.prepend(button);
+}
 
 /**
  * @param {FerrisType} type

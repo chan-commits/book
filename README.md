@@ -4,6 +4,8 @@
 
 This repository contains the source of "The Rust Programming Language" book.
 
+Language / 语言: [English](#the-rust-programming-language) | [中文](#rust-程序设计语言-中文简介)
+
 [The book is available in dead-tree form from No Starch Press][nostarch].
 
 [nostarch]: https://nostarch.com/rust-programming-language-2nd-edition
@@ -105,3 +107,8 @@ which is provided in `ci/dictionary.txt`. If the script produces a false
 positive (say, you used the word `BTreeMap` which the script considers invalid),
 you need to add this word to `ci/dictionary.txt` (keep the sorted order for
 consistency).
+
+
+## Rust 程序设计语言（中文简介）
+
+本仓库包含《Rust 程序设计语言》一书源码，现已加入 `src/CN/` 中文内容目录以及站点内中英文切换入口（页面右上角按钮）。

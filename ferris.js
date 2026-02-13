@@ -38,19 +38,21 @@ function attachLanguageSwitcher() {
   button.classList.add("icon-button", "language-toggle");
 
   let currentPath = window.location.pathname;
-  let inChineseSection = currentPath.includes("/CN/");
+  let htmlFileMatch = currentPath.match(/[^/]+\.html$/);
+  if (!htmlFileMatch) {
+    return;
+  }
 
-  if (inChineseSection) {
+  let pageName = htmlFileMatch[0];
+  let basePath = currentPath.slice(0, -pageName.length);
+
+  if (basePath.endsWith("/CN/")) {
     button.textContent = "EN";
-    button.setAttribute("href", currentPath.replace("/CN/", "/"));
+    button.setAttribute("href", `${basePath.slice(0, -3)}${pageName}`);
     button.setAttribute("title", "Switch to English");
   } else {
     button.textContent = "中文";
-    if (currentPath.endsWith("/")) {
-      button.setAttribute("href", `${currentPath}CN/title-page.html`);
-    } else {
-      button.setAttribute("href", currentPath.replace(/\.html$/, "/CN/$&"));
-    }
+    button.setAttribute("href", `${basePath}CN/${pageName}`);
     button.setAttribute("title", "切换到中文");
   }
 
